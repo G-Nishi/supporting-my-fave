@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ListView: View {
+struct FavoriteView: View {
     
     var body: some View {
         NavigationView {
@@ -85,7 +85,7 @@ struct ListView: View {
                         Spacer()
                     }
                     VStack {
-                        Text("LIST")
+                        Text("FAVORITE")
                             .font(.system(size: 50))
                             .padding(.top, 56)
                         Spacer()
@@ -145,5 +145,5 @@ struct ListView: View {
 }
 
 #Preview {
-    ListView()
+    FavoriteView()
 }

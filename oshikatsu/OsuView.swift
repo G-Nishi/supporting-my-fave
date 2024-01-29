@@ -1,6 +1,16 @@
+//
+//  OsuView.swift
+//  oshikatsu
+//
+//  Created by NG on 2024/01/29.
+//
+
 import SwiftUI
 
-struct SettingView: View {
+struct OsuView: View {
+    var randomPoint: Int
+    var randomLevel: Int
+    @State var ranPoint = 1100
     var body: some View {
         NavigationView {
             ZStack {
@@ -14,7 +24,7 @@ struct SettingView: View {
                         VStack(alignment: .leading) {
                             Text("name")
                                 .font(.system(size: 50))
-                            Text("level 1")
+                            Text("level \(randomLevel)")
                                 .font(.system(size: 15))
                                 .padding(.bottom, 9)
                             ZStack(alignment: .leading) {
@@ -23,35 +33,35 @@ struct SettingView: View {
                                     .frame(width: 191, height: 10)
                                 Rectangle()
                                     .foregroundColor(.green)
-                                    .frame(width: 130, height: 10)
+                                    .frame(width: CGFloat(randomPoint), height: 10)
                             }
                         }
                     }
                     .padding(.top, 134)
                     .padding(.bottom, 54)
                     
-                    VStack {
-                        NavigationLink(destination: SignupView()) {
-                            Text("PROFILE")
-                                .foregroundStyle(Color.black)
-                                .frame(width: 400, height: 71)
-                                .border(.black, width: 1)
-                        }
-                        NavigationLink(destination: SignupView()) {
-                            Text("HISTORY")
-                                .foregroundStyle(Color.black)
-                                .frame(width: 400, height: 71)
-                                .border(.black, width: 1)
-                                .offset(x: 0, y: -9)
-                        }
-                        NavigationLink(destination: SignupView()) {
-                            Text("ACCOUNT")
-                                .foregroundStyle(Color.black)
-                                .frame(width: 400, height: 71)
-                                .border(.black, width: 1)
-                                .offset(x: 0, y: -18)
+                    ForEach(1..<6) { index in
+                        let displayPoint = ranPoint - (index * 100)
+                        NavigationLink(destination: tributeView(randomPoint: randomPoint, randomLevel: randomLevel, displayPoint: displayPoint)){
+                            HStack {
+                                Text("tribute \(index)")
+                                    .font(.system(size: 30))
+                                    .padding(.leading, 46)
+                                    .foregroundColor(.black)
+                                Spacer()
+                                Text("\(displayPoint) pt")
+                                    .font(.system(size: 30))
+                                    .padding(.trailing, 46)
+                                    .foregroundColor(.black)
+                            }
+                            .frame(width: 337, height: 63)
+                            .border(Color.black)
+                            .padding(.bottom, 13)
                         }
                     }
+                    
+                    
+                    
                     Spacer()
                 }
                 .ignoresSafeArea()
@@ -64,7 +74,7 @@ struct SettingView: View {
                         Spacer()
                     }
                     VStack {
-                        Text("SETTING")
+                        Text("推す")
                             .font(.system(size: 50))
                             .padding(.top, 56)
                         Spacer()
@@ -87,7 +97,7 @@ struct SettingView: View {
                             }
                         }
                         .offset(x: 8, y: 0)
-
+                        
                         NavigationLink(destination: FavoriteView()) {
                             ZStack {
                                 Rectangle()
@@ -99,7 +109,7 @@ struct SettingView: View {
                                     .foregroundColor(.black)
                             }
                         }
-
+                        
                         NavigationLink(destination: SettingView()) {
                             ZStack {
                                 Rectangle()
@@ -123,5 +133,5 @@ struct SettingView: View {
 }
 
 #Preview {
-    SettingView()
+    OsuView(randomPoint: 0, randomLevel: 0)
 }

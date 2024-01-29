@@ -1,61 +1,18 @@
+//
+//  Completion.swift
+//  oshikatsu
+//
+//  Created by NG on 2024/01/29.
+//
+
 import SwiftUI
 
-struct SettingView: View {
+struct CompletionView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                VStack {
-                    HStack {
-                        Image("kanta")
-                            .resizable()
-                            .frame(width: 98, height: 98)
-                            .clipShape(Circle())
-                            .padding(.trailing, 48)
-                        VStack(alignment: .leading) {
-                            Text("name")
-                                .font(.system(size: 50))
-                            Text("level 1")
-                                .font(.system(size: 15))
-                                .padding(.bottom, 9)
-                            ZStack(alignment: .leading) {
-                                Rectangle()
-                                    .foregroundColor(.gray)
-                                    .frame(width: 191, height: 10)
-                                Rectangle()
-                                    .foregroundColor(.green)
-                                    .frame(width: 130, height: 10)
-                            }
-                        }
-                    }
-                    .padding(.top, 134)
-                    .padding(.bottom, 54)
-                    
-                    VStack {
-                        NavigationLink(destination: SignupView()) {
-                            Text("PROFILE")
-                                .foregroundStyle(Color.black)
-                                .frame(width: 400, height: 71)
-                                .border(.black, width: 1)
-                        }
-                        NavigationLink(destination: SignupView()) {
-                            Text("HISTORY")
-                                .foregroundStyle(Color.black)
-                                .frame(width: 400, height: 71)
-                                .border(.black, width: 1)
-                                .offset(x: 0, y: -9)
-                        }
-                        NavigationLink(destination: SignupView()) {
-                            Text("ACCOUNT")
-                                .foregroundStyle(Color.black)
-                                .frame(width: 400, height: 71)
-                                .border(.black, width: 1)
-                                .offset(x: 0, y: -18)
-                        }
-                    }
-                    Spacer()
-                }
-                .ignoresSafeArea()
-                
+                Text("completion")
+                    .font(.system(size: 50))
                 ZStack {
                     VStack {
                         Rectangle()
@@ -64,7 +21,7 @@ struct SettingView: View {
                         Spacer()
                     }
                     VStack {
-                        Text("SETTING")
+                        Text("推す")
                             .font(.system(size: 50))
                             .padding(.top, 56)
                         Spacer()
@@ -87,7 +44,7 @@ struct SettingView: View {
                             }
                         }
                         .offset(x: 8, y: 0)
-
+                        
                         NavigationLink(destination: FavoriteView()) {
                             ZStack {
                                 Rectangle()
@@ -99,7 +56,7 @@ struct SettingView: View {
                                     .foregroundColor(.black)
                             }
                         }
-
+                        
                         NavigationLink(destination: SettingView()) {
                             ZStack {
                                 Rectangle()
@@ -118,10 +75,9 @@ struct SettingView: View {
             }
             
         }
-        .navigationBarBackButtonHidden(true)
-    }
+        .navigationBarBackButtonHidden(true)    }
 }
 
 #Preview {
-    SettingView()
+    CompletionView()
 }
